@@ -83,7 +83,7 @@ function library:Window(name)
 	ButtonClickLine.Position = UDim2.new(0, 0, 0, 0)
 	ButtonClickLine.Size = UDim2.new(0, 103, 0, 4)
 	ButtonClickLine.ZIndex = 0
-   ButtonClickLine.Visible = false
+	ButtonClickLine.Visible = false
 
 	UIGradient.Color = ColorSequence.new{ColorSequenceKeypoint.new(0.00, Color3.fromRGB(27, 27, 27)), ColorSequenceKeypoint.new(0.50, Color3.fromRGB(223, 37, 255)), ColorSequenceKeypoint.new(1.00, Color3.fromRGB(27, 27, 27))}
 	UIGradient.Parent = ButtonClickLine
@@ -143,8 +143,11 @@ function library:Window(name)
 		UIPadding_2.PaddingRight = UDim.new(0, 6)
 		UIPadding_2.PaddingTop = UDim.new(0, 15)
 
-		library.Tabs[text].TabButton = TabButton
-		library.Tabs[text].Tab = Tab1
+		local tab = {}
+
+		tab.TabButton = TabButton
+		tab.Tab = Tab1
+		library.Tabs[text] = tab
 
 		function tab:GroupBox(title)
 			assert(type(title) == "string", "Title must be a string")
@@ -229,22 +232,27 @@ function library:Window(name)
 				UIGradient_2.Color = ColorSequence.new{ColorSequenceKeypoint.new(0.00, Color3.fromRGB(255, 255, 255)), ColorSequenceKeypoint.new(1.00, Color3.fromRGB(127, 127, 127))}
 				UIGradient_2.Rotation = 90
 				UIGradient_2.Parent = ToggleIndicator
-				
+
 				library.Values[name] = default
-				
+
 				ToggleIndicator.InputBegan:Connect(function (input)
 					if input.UserInputType == Enum.UserInputType.MouseButton1 then
 						if library.Values[name] then library.Values[name] = false else library.Values[name] = true end
 					end
 				end)
 			end
-
+			
+			
 			return objects
 		end
-
-      TabButton.MouseButton1Down:Connect(function ()
-         
-      end)
+		
+		TabButton.MouseButton1Down:Connect(function ()
+			ButtonClickLine.Visible = true
+			ButtonClickLine.Position = UDim2.new(0,TabButton.Position.X,0,0.357142866)
+			for _, v in ipairs(library.Tabs) do
+				print(v)
+			end
+		end)
 
 		return tab
 	end
