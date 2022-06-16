@@ -98,6 +98,7 @@ function library:Window(name)
 
 	local window = {}
 	window.MainFrame = Window
+	window.ButtonClickLine = ButtonClickLine
 
 	function window:Tab(text)
 		assert(type(name) == "string", "Name must be a string")
@@ -255,8 +256,8 @@ function library:Window(name)
 		end
 		
 		TabButton.MouseButton1Down:Connect(function ()
-			ButtonClickLine.Visible = true
-			ButtonClickLine.Position = UDim2.new(0,TabButton.Position.X,0,0.357142866)
+			window.ButtonClickLine.Visible = true
+			window.ButtonClickLine.Position = UDim2.new(0,TabButton.Position.X,0,0.357142866)
 		end)
 
 		return tab
