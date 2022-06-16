@@ -28,7 +28,6 @@ function library:Window(name)
 	local Line = Instance.new("Frame")
 	local TabsFrame = Instance.new("Frame")
 	local UIListLayout = Instance.new("UIListLayout")
-	local ButtonClickLine = Instance.new("Frame")
 	local UIGradient = Instance.new("UIGradient")
 	local UICorner = Instance.new("UICorner")
 
@@ -80,16 +79,6 @@ function library:Window(name)
 	UIListLayout.VerticalAlignment = Enum.VerticalAlignment.Center
 	UIListLayout.Padding = UDim.new(0, 12)
 
-	ButtonClickLine.Name = "ButtonClickLine"
-	ButtonClickLine.Parent = TopBar
-	ButtonClickLine.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-	ButtonClickLine.BackgroundTransparency = 0.500
-	ButtonClickLine.BorderSizePixel = 0
-	ButtonClickLine.Position = UDim2.new(0.131769925, 0, 0.852964103, 0)
-	ButtonClickLine.Size = UDim2.new(0, 103, 0, 4)
-	ButtonClickLine.ZIndex = 1
-	print(ButtonClickLine.ZIndex)
-
 	UIGradient.Color = ColorSequence.new{ColorSequenceKeypoint.new(0.00, Color3.fromRGB(27, 27, 27)), ColorSequenceKeypoint.new(0.50, Color3.fromRGB(223, 37, 255)), ColorSequenceKeypoint.new(1.00, Color3.fromRGB(27, 27, 27))}
 	UIGradient.Parent = ButtonClickLine
 
@@ -108,6 +97,8 @@ function library:Window(name)
 		local GroupBoxes_2 = Instance.new("ScrollingFrame")
 		local UIListLayout_4 = Instance.new("UIListLayout")
 		local UIPadding_2 = Instance.new("UIPadding")
+		local ButtonClickLine = Instance.new("Frame")
+
 
 		TabButton.Name = "TabButton"
 		TabButton.Parent = TabsFrame
@@ -143,6 +134,15 @@ function library:Window(name)
 		UIListLayout_4.HorizontalAlignment = Enum.HorizontalAlignment.Center
 		UIListLayout_4.SortOrder = Enum.SortOrder.LayoutOrder
 		UIListLayout_4.Padding = UDim.new(0, 15)
+
+		ButtonClickLine.Name = "ButtonClickLine"
+		ButtonClickLine.Parent = TabButton
+		ButtonClickLine.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+		ButtonClickLine.BackgroundTransparency = 0.500
+		ButtonClickLine.BorderSizePixel = 0
+		ButtonClickLine.Position = UDim2.new(-0.00415246189, 0, 0.948202193, 0)
+		ButtonClickLine.Size = UDim2.new(0, 103, 0, 4)
+		ButtonClickLine.ZIndex = 1
 
 		UIPadding_2.Parent = GroupBoxes_2
 		UIPadding_2.PaddingRight = UDim.new(0, 6)
