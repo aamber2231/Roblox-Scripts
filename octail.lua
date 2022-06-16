@@ -38,7 +38,7 @@ function library:Window(name)
 	Window.BorderColor3 = Color3.fromRGB(138, 138, 138)
 	Window.Position = UDim2.new(0.253039509, 0, 0.218633533, 0)
 	Window.Size = UDim2.new(0, 650, 0, 453)
-	Window.ZIndex = 0
+	Window.ZIndex = 1
 
 	TopBar.Name = "TopBar"
 	TopBar.Parent = Window
