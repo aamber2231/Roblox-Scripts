@@ -1,4 +1,7 @@
-local library = {}
+local library = {
+   Tabs {},
+   Values = {}
+}
 
 --[[
 
