@@ -255,10 +255,10 @@ function library:Window(name)
 			return objects
 		end
 		
-		TabButton.MouseButton1Down:Connect(function ()
-			window.ButtonClickLine.Visible = true
-			window.ButtonClickLine.Position = UDim2.new(0,TabButton.Position.X,0,0.357142866)
-		end)
+		-- TabButton.MouseButton1Down:Connect(function ()
+		-- 	window.ButtonClickLine.Visible = true
+		-- 	window.ButtonClickLine.Position = UDim2.new(0,TabButton.Position.X,0,0.357142866)
+		-- end)
 
 		return tab
 	end
