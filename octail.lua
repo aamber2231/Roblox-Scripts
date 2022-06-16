@@ -225,14 +225,15 @@ function library:Window(name)
 				NameLabel.BackgroundColor3 = Color3.fromRGB(31, 31, 31)
 				NameLabel.BackgroundTransparency = 1.000
 				NameLabel.BorderSizePixel = 0
-				NameLabel.Position = UDim2.new(0.349891156, 0, 0.00914834067, 0)
-				NameLabel.Size = UDim2.new(0, 100, 0, 21)
+				NameLabel.Position = UDim2.new(0.158530921, 0, -0.0363062024, 0)
+				NameLabel.Size = UDim2.new(0, 96, 0, 21)
 				NameLabel.ZIndex = 125
 				NameLabel.Font = Enum.Font.SourceSans
 				NameLabel.Text = text
 				NameLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
 				NameLabel.TextSize = 17.000
-				NameLabel.TextXAlignment = Enum.TextXAlignment.Right
+				NameLabel.TextXAlignment = Enum.TextXAlignment.Left
+				NameLabel.TextScaled = true
 
 				ToggleIndicator.Name = "ToggleIndicator"
 				ToggleIndicator.Parent = ToggleBox
@@ -247,9 +248,14 @@ function library:Window(name)
             table.insert(Values, name)
 				Values[name] = default
 
+				if default then
+					ToggleIndicator.BackgroundColor3 = Color3.fromRGB(160, 255, 7)
+				end
+
 				ToggleIndicator.InputBegan:Connect(function (input)
 					if input.UserInputType == Enum.UserInputType.MouseButton1 then
-						if library.Values[name] then library.Values[name] = false else library.Values[name] = true end
+						print('toggle pressed last input ' .. tostring(Values[name]))
+						if Values[name] then Values[name] = false ToggleIndicator.BackgroundColor3 = Color3.fromRGB(88, 88, 88) else Values[name] = true ToggleIndicator.BackgroundColor3 = Color3.fromRGB(160, 255, 7) end
 					end
 				end)
 			end
@@ -284,4 +290,14 @@ function library:GetValue(name)
 	return library.Values[name]
 end
 
-return library
+--return library
+
+local window = library:Window('HelloWorld')
+
+local tab1 = window:Tab('Tab1')
+local tab2 = window:Tab('Tab2')
+
+local groupbox1 = tab1:GroupBox('General')
+
+local toggle1 = groupbox1:ToggleBox('YesBox', 'Yes Box', false)
+local toggle2 = groupbox1:ToggleBox('Yesbox2', 'Yes Box 2 sdf s fsd', true)
