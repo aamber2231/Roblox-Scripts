@@ -3,6 +3,12 @@ local Tabs = {}
 local Values = {}
 local LineValues = {}
 
+local Camera = game:GetService('Workspace'):WaitForChild('Camera')
+local DragMousePosition
+local FramePosition
+
+local Draggable = false
+
 if game:GetService("CoreGui"):FindFirstChild('Octail') then game:GetService("CoreGui"):FindFirstChild('Octail'):Destroy() end
 
 --[[
@@ -260,6 +266,27 @@ function library:Window(name)
 				end)
 			end
 			
+			function objects:Button(text, callback) 
+				local Button = Instance.new("TextButton")
+				local UIGradient = Instance.new("UIGradient")
+				
+				Button.Name = "Button"
+				Button.Parent = Objects
+				Button.BackgroundColor3 = Color3.fromRGB(56, 56, 56)
+				Button.BorderColor3 = Color3.fromRGB(47, 47, 47)
+				Button.Position = UDim2.new(0.00684931502, 0, 0.203007519, 0)
+				Button.Size = UDim2.new(0, 155, 0, 23)
+				Button.Font = Enum.Font.SourceSans
+				Button.Text = text
+				Button.TextColor3 = Color3.fromRGB(255, 255, 255)
+				Button.TextSize = 16.000
+				
+				UIGradient.Color = ColorSequence.new{ColorSequenceKeypoint.new(0.00, Color3.fromRGB(255, 255, 255)), ColorSequenceKeypoint.new(1.00, Color3.fromRGB(127, 127, 127))}
+				UIGradient.Rotation = 90
+				UIGradient.Parent = Button
+
+				Button.MouseButton1Down:Connect(callback)
+			end
 			
 			return objects
 		end
@@ -283,6 +310,27 @@ function library:Window(name)
 		return tab
 	end
 
+	TopBar.InputBegan:Connect(function(input)
+		if input.UserInputType == Enum.UserInputType.MouseButton1 then
+			Draggable = true
+			DragMousePosition = Vector2.new(input.Position.X, input.Position.Y)
+			FramePosition = Vector2.new(Window.Position.X.Scale, Window.Position.Y.Scale)
+		end
+	end)
+	
+	TopBar.InputEnded:Connect(function(input)
+		if input.UserInputType == Enum.UserInputType.MouseButton1 then
+			Draggable = false
+		end
+	end)
+	
+	game:GetService('UserInputService').InputChanged:Connect(function(input)
+		if Draggable then
+			local NewPosition = FramePosition + ((Vector2.new(input.Position.X, input.Position.Y) - DragMousePosition) / Camera.ViewportSize)
+			Window.Position = UDim2.new(NewPosition.X, 0, NewPosition.Y, 0)
+		end
+	end)
+
 	return window
 end
 
@@ -290,14 +338,4 @@ function library:GetValue(name)
 	return library.Values[name]
 end
 
---return library
-
-local window = library:Window('HelloWorld')
-
-local tab1 = window:Tab('Tab1')
-local tab2 = window:Tab('Tab2')
-
-local groupbox1 = tab1:GroupBox('General')
-
-local toggle1 = groupbox1:ToggleBox('YesBox', 'Yes Box', false)
-local toggle2 = groupbox1:ToggleBox('Yesbox2', 'Yes Box 2 sdf s fsd', true)
+return library
