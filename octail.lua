@@ -2,6 +2,8 @@ local library = {}
 local Tabs = {}
 local Values = {}
 
+if game:GetService("CoreGui"):FindFirstChild('Octail') then game:GetService("CoreGui"):FindFirstChild('Octail'):Destroy() end
+
 --[[
 
 We will handle Menu Opening And Closing Inside of the class that requires the use of the library.
@@ -11,7 +13,8 @@ Allows us to change keybinds and stuff
 --]] 
 
 library.gui = Instance.new('ScreenGui')
-library.gui.Name = game:GetService("HttpService"):GenerateGUID(false):lower():sub(1, 10);
+library.gui.Name = 'Octail'
+--library.gui.Name = game:GetService("HttpService"):GenerateGUID(false):lower():sub(1, 10);
 library.gui.ResetOnSpawn = false
 library.gui.Parent = game:GetService("CoreGui")
 library.gui.Enabled = true
@@ -254,13 +257,6 @@ function library:Window(name)
 		TabButton.MouseButton1Down:Connect(function ()
 			ButtonClickLine.Visible = true
 			ButtonClickLine.Position = UDim2.new(0,TabButton.Position.X,0,0.357142866)
-			for _, v in pairs(Tabs) do
-            if not v:IsA("table") then
-               for _, i in pairs(Tabs[v]) do
-                  print(i)
-               end
-            end
-			end
 		end)
 
 		return tab
