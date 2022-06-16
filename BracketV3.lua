@@ -4,6 +4,14 @@ local RunService = game:GetService("RunService")
 local HttpService = game:GetService("HttpService")
 local TweenService = game:GetService("TweenService")
 local UserInputService = game:GetService("UserInputService")
+local Detached = false
+
+function Library:Unload()
+   Detached = true
+   if game:GetService('CoreGui'):FindFirstChild('octail.win') then
+      game:GetService('CoreGui'):FindFirstChild('octail.win'):Destroy()
+   end  
+end
 
 local function MakeDraggable(ClickObject, Object)
 	local Dragging = nil
@@ -154,7 +162,7 @@ function Library:CreateWindow(Config, Parent)
 	end
 
 	RunService.RenderStepped:Connect(function()
-		if Library.Toggle then
+		if Library.Toggle and not Detached then
 			Screen.ToolTip.Position = UDim2.new(0,UserInputService:GetMouseLocation().X + 10,0,UserInputService:GetMouseLocation().Y - 5)
 		end
 	end)
