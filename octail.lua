@@ -254,7 +254,7 @@ function library:Window(name)
 		TabButton.MouseButton1Down:Connect(function ()
 			ButtonClickLine.Visible = true
 			ButtonClickLine.Position = UDim2.new(0,TabButton.Position.X,0,0.357142866)
-			for _, v in ipairs(Tabs) do
+			for _, v in pairs(Tabs) do
 				print(v)
 			end
 		end)
