@@ -256,7 +256,7 @@ function library:Window(name)
 		
 		TabButton.MouseButton1Down:Connect(function ()
 			ButtonClickLine.Visible = true
-			ButtonClickLine.Position = UDim2.new(0,TabButton.Position.X,0,0.357142866)
+			ButtonClickLine.Position = UDim2.new(TabButton.Position.X, 0, 0.357142866, 0)
 		end)
 
 		return tab
