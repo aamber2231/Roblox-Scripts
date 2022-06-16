@@ -156,7 +156,7 @@ function library:Window(name)
 		tab.Tab = Tab1
 
       table.insert(Tabs, text)
-      Tabs[text] =  tab
+      Tabs[text] = tab
 		table.insert(LineValues, text)
 		LineValues[text] = ButtonClickLine
 
@@ -260,9 +260,15 @@ function library:Window(name)
 		
 		TabButton.MouseButton1Down:Connect(function ()
 			ButtonClickLine.Visible = true
+			Tab1.Visible = true
 			for _, i in ipairs(LineValues) do
 				if i ~= text then
 					LineValues[i].Visible = false
+				end
+			end
+			for _, v in ipairs(Tabs) do
+				if v ~= text then
+					Tabs[v].Tab.Visible = false
 				end
 			end
 		end)
