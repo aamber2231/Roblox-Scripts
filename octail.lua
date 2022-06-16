@@ -80,9 +80,10 @@ function library:Window(name)
 	ButtonClickLine.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 	ButtonClickLine.BackgroundTransparency = 0.500
 	ButtonClickLine.BorderSizePixel = 0
-	ButtonClickLine.Position = UDim2.new(100, 0, 100, 0)
+	ButtonClickLine.Position = UDim2.new(0, 0, 0, 0)
 	ButtonClickLine.Size = UDim2.new(0, 103, 0, 4)
 	ButtonClickLine.ZIndex = 0
+   ButtonClickLine.Visible = false
 
 	UIGradient.Color = ColorSequence.new{ColorSequenceKeypoint.new(0.00, Color3.fromRGB(27, 27, 27)), ColorSequenceKeypoint.new(0.50, Color3.fromRGB(223, 37, 255)), ColorSequenceKeypoint.new(1.00, Color3.fromRGB(27, 27, 27))}
 	UIGradient.Parent = ButtonClickLine
@@ -142,10 +143,8 @@ function library:Window(name)
 		UIPadding_2.PaddingRight = UDim.new(0, 6)
 		UIPadding_2.PaddingTop = UDim.new(0, 15)
 
-		local tab = {}
-
-		tab.TabButton = TabButton
-		tab.Tab = Tab1
+		library.Tabs[text].TabButton = TabButton
+		library.Tabs[text].Tab = Tab1
 
 		function tab:GroupBox(title)
 			assert(type(title) == "string", "Title must be a string")
@@ -242,6 +241,10 @@ function library:Window(name)
 
 			return objects
 		end
+
+      TabButton.MouseButton1Down:Connect(function ()
+         
+      end)
 
 		return tab
 	end
