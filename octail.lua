@@ -169,7 +169,7 @@ function library:Window(name)
 			local UIListLayout_3 = Instance.new("UIListLayout")
 
 			NewGroupBoxWithName.Name = "NewGroupBoxWithName"
-			NewGroupBoxWithName.Parent = Tab1
+			NewGroupBoxWithName.Parent = GroupBoxes_2
 			NewGroupBoxWithName.BackgroundColor3 = Color3.fromRGB(31, 31, 31)
 			NewGroupBoxWithName.BorderColor3 = Color3.fromRGB(47, 47, 47)
 			NewGroupBoxWithName.Position = UDim2.new(0.00956937764, 0, 0, 0)
