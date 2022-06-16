@@ -1,7 +1,6 @@
-local library = {
-   Tabs = {},
-   Values = {}
-}
+local library = {}
+local Tabs = {}
+local Values = {}
 
 --[[
 
@@ -9,7 +8,7 @@ We will handle Menu Opening And Closing Inside of the class that requires the us
 Allows us to change keybinds and stuff
 (totally not because im lazy to make a keybind manager)
 
---]]
+--]] 
 
 library.gui = Instance.new('ScreenGui')
 library.gui.Name = game:GetService("HttpService"):GenerateGUID(false):lower():sub(1, 10);
@@ -150,8 +149,9 @@ function library:Window(name)
 
 		tab.TabButton = TabButton
 		tab.Tab = Tab1
-      table.insert(library.Tabs, tab)
-		library.Tabs[text] = tab
+
+      table.insert(Tabs, text)
+      Tabs[text] =  tab
 
 		function tab:GroupBox(title)
 			assert(type(title) == "string", "Title must be a string")
@@ -237,8 +237,8 @@ function library:Window(name)
 				UIGradient_2.Rotation = 90
 				UIGradient_2.Parent = ToggleIndicator
 
-            table.insert(library.Values, name)
-				library.Values[name] = default
+            table.insert(Values, name)
+				Values[name] = default
 
 				ToggleIndicator.InputBegan:Connect(function (input)
 					if input.UserInputType == Enum.UserInputType.MouseButton1 then
