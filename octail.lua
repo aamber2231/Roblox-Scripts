@@ -1,5 +1,5 @@
 local library = {
-   Tabs {},
+   Tabs = {},
    Values = {}
 }
 
