@@ -28,7 +28,6 @@ function library:Window(name)
 	local Line = Instance.new("Frame")
 	local TabsFrame = Instance.new("Frame")
 	local UIListLayout = Instance.new("UIListLayout")
-	local UIGradient = Instance.new("UIGradient")
 	local UICorner = Instance.new("UICorner")
 
 	Window.Name = "MainFrame"
@@ -79,9 +78,6 @@ function library:Window(name)
 	UIListLayout.VerticalAlignment = Enum.VerticalAlignment.Center
 	UIListLayout.Padding = UDim.new(0, 12)
 
-	UIGradient.Color = ColorSequence.new{ColorSequenceKeypoint.new(0.00, Color3.fromRGB(27, 27, 27)), ColorSequenceKeypoint.new(0.50, Color3.fromRGB(223, 37, 255)), ColorSequenceKeypoint.new(1.00, Color3.fromRGB(27, 27, 27))}
-	UIGradient.Parent = ButtonClickLine
-
 	UICorner.CornerRadius = UDim.new(0, 400)
 	UICorner.Parent = ButtonClickLine
 
@@ -98,6 +94,7 @@ function library:Window(name)
 		local UIListLayout_4 = Instance.new("UIListLayout")
 		local UIPadding_2 = Instance.new("UIPadding")
 		local ButtonClickLine = Instance.new("Frame")
+		local UIGradient = Instance.new("UIGradient")
 
 
 		TabButton.Name = "TabButton"
@@ -143,6 +140,10 @@ function library:Window(name)
 		ButtonClickLine.Position = UDim2.new(-0.00415246189, 0, 0.948202193, 0)
 		ButtonClickLine.Size = UDim2.new(0, 103, 0, 4)
 		ButtonClickLine.ZIndex = 1
+		ButtonClickLine.Visible = false
+
+		UIGradient.Color = ColorSequence.new{ColorSequenceKeypoint.new(0.00, Color3.fromRGB(27, 27, 27)), ColorSequenceKeypoint.new(0.50, Color3.fromRGB(223, 37, 255)), ColorSequenceKeypoint.new(1.00, Color3.fromRGB(27, 27, 27))}
+		UIGradient.Parent = ButtonClickLine
 
 		UIPadding_2.Parent = GroupBoxes_2
 		UIPadding_2.PaddingRight = UDim.new(0, 6)
@@ -256,7 +257,6 @@ function library:Window(name)
 		
 		TabButton.MouseButton1Down:Connect(function ()
 			ButtonClickLine.Visible = true
-			ButtonClickLine.Position = UDim2.new(TabButton.Position.X, 0, 0.357142866, 0)
 		end)
 
 		return tab
