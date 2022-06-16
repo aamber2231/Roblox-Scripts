@@ -28,7 +28,6 @@ function library:Window(name)
 	local Line = Instance.new("Frame")
 	local TabsFrame = Instance.new("Frame")
 	local UIListLayout = Instance.new("UIListLayout")
-	local UICorner = Instance.new("UICorner")
 
 	Window.Name = "MainFrame"
 	Window.Parent = library.gui
@@ -78,9 +77,6 @@ function library:Window(name)
 	UIListLayout.VerticalAlignment = Enum.VerticalAlignment.Center
 	UIListLayout.Padding = UDim.new(0, 12)
 
-	UICorner.CornerRadius = UDim.new(0, 400)
-	UICorner.Parent = ButtonClickLine
-
 	local window = {}
 	window.MainFrame = Window
 
@@ -95,6 +91,7 @@ function library:Window(name)
 		local UIPadding_2 = Instance.new("UIPadding")
 		local ButtonClickLine = Instance.new("Frame")
 		local UIGradient = Instance.new("UIGradient")
+		local UICorner = Instance.new("UICorner")
 
 
 		TabButton.Name = "TabButton"
@@ -144,6 +141,9 @@ function library:Window(name)
 
 		UIGradient.Color = ColorSequence.new{ColorSequenceKeypoint.new(0.00, Color3.fromRGB(27, 27, 27)), ColorSequenceKeypoint.new(0.50, Color3.fromRGB(223, 37, 255)), ColorSequenceKeypoint.new(1.00, Color3.fromRGB(27, 27, 27))}
 		UIGradient.Parent = ButtonClickLine
+
+		UICorner.CornerRadius = UDim.new(0, 400)
+		UICorner.Parent = ButtonClickLine	
 
 		UIPadding_2.Parent = GroupBoxes_2
 		UIPadding_2.PaddingRight = UDim.new(0, 6)
