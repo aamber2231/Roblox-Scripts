@@ -112,7 +112,7 @@ function library:Window(name)
 		Tab1.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 		Tab1.BackgroundTransparency = 1.000
 		Tab1.BorderSizePixel = 0
-		Tab1.Position = UDim2.new(0, 0, 0.081677705, 0)
+		Tab1.Position = UDim2.new(0, 0, 0.082, 0)
 		Tab1.Size = UDim2.new(0, 650, 0, 416)
 		Tab1.Visible = false
 
@@ -169,7 +169,7 @@ function library:Window(name)
 			local UIListLayout_3 = Instance.new("UIListLayout")
 
 			NewGroupBoxWithName.Name = "NewGroupBoxWithName"
-			NewGroupBoxWithName.Parent = tab.Tab
+			NewGroupBoxWithName.Parent = Tab1
 			NewGroupBoxWithName.BackgroundColor3 = Color3.fromRGB(31, 31, 31)
 			NewGroupBoxWithName.BorderColor3 = Color3.fromRGB(47, 47, 47)
 			NewGroupBoxWithName.Position = UDim2.new(0.00956937764, 0, 0, 0)
@@ -183,7 +183,7 @@ function library:Window(name)
 			TextLabel.Size = UDim2.new(0, 171, 0, 21)
 			TextLabel.ZIndex = 125
 			TextLabel.Font = Enum.Font.SourceSans
-			TextLabel.Text = "Exploits"
+			TextLabel.Text = title
 			TextLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
 			TextLabel.TextSize = 14.000
 			TextLabel.TextXAlignment = Enum.TextXAlignment.Left
