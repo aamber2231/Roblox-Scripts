@@ -1,6 +1,7 @@
 local library = {}
 local Tabs = {}
 local Values = {}
+local LineValues = {}
 
 if game:GetService("CoreGui"):FindFirstChild('Octail') then game:GetService("CoreGui"):FindFirstChild('Octail'):Destroy() end
 
@@ -156,6 +157,8 @@ function library:Window(name)
 
       table.insert(Tabs, text)
       Tabs[text] =  tab
+		table.insert(LineValues, text)
+		LineValues[text] = ButtonClickLine
 
 		function tab:GroupBox(title)
 			assert(type(title) == "string", "Title must be a string")
@@ -257,6 +260,11 @@ function library:Window(name)
 		
 		TabButton.MouseButton1Down:Connect(function ()
 			ButtonClickLine.Visible = true
+			for _, i in ipairs(LineValues) do
+				if i ~= text then
+					LineValues[i].Visible = false
+				end
+			end
 		end)
 
 		return tab
