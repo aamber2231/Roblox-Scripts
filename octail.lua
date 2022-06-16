@@ -147,6 +147,7 @@ function library:Window(name)
 
 		tab.TabButton = TabButton
 		tab.Tab = Tab1
+      table.insert(library.Tabs, tab)
 		library.Tabs[text] = tab
 
 		function tab:GroupBox(title)
@@ -233,7 +234,7 @@ function library:Window(name)
 				UIGradient_2.Rotation = 90
 				UIGradient_2.Parent = ToggleIndicator
 
-            table.insert(library, name)
+            table.insert(library.Values, name)
 				library.Values[name] = default
 
 				ToggleIndicator.InputBegan:Connect(function (input)
