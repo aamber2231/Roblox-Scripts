@@ -233,6 +233,7 @@ function library:Window(name)
 				UIGradient_2.Rotation = 90
 				UIGradient_2.Parent = ToggleIndicator
 
+            table.insert(library, name)
 				library.Values[name] = default
 
 				ToggleIndicator.InputBegan:Connect(function (input)
@@ -261,7 +262,7 @@ function library:Window(name)
 end
 
 function library:GetValue(name)
-	return library[name]
+	return library.Values[name]
 end
 
 return library
