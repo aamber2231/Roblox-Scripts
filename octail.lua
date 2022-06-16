@@ -267,7 +267,7 @@ function library:Window(name)
 				end
 			end
 			for _, v in ipairs(Tabs) do
-				print(v)
+				print(tostring(_),v)
 				if v ~= text then
 					Tabs[v].Tab.Visible = false
 				end
