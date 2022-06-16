@@ -85,10 +85,9 @@ function library:Window(name)
 	ButtonClickLine.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 	ButtonClickLine.BackgroundTransparency = 0.500
 	ButtonClickLine.BorderSizePixel = 0
-	ButtonClickLine.Position = UDim2.new(0, 0, 0, 0)
+	ButtonClickLine.Position = UDim2.new(0.131769925, 0, 0.852964103, 0)
 	ButtonClickLine.Size = UDim2.new(0, 103, 0, 4)
 	ButtonClickLine.ZIndex = 0
-	ButtonClickLine.Visible = false
 
 	UIGradient.Color = ColorSequence.new{ColorSequenceKeypoint.new(0.00, Color3.fromRGB(27, 27, 27)), ColorSequenceKeypoint.new(0.50, Color3.fromRGB(223, 37, 255)), ColorSequenceKeypoint.new(1.00, Color3.fromRGB(27, 27, 27))}
 	UIGradient.Parent = ButtonClickLine
